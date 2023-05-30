@@ -2,6 +2,9 @@
 /dist
 /node_modules
 
+# ignore custom file
+.config
+
 # Logs
 logs
 *.log
