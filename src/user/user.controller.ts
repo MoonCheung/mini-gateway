@@ -1,6 +1,6 @@
 import { Controller, Get, Version, VERSION_NEUTRAL } from '@nestjs/common';
 import { UserService } from './user.service';
-import { BusinessException } from '../common/exceptions/business.exception';
+import { BusinessException } from '@/common/exceptions/business.exception';
 import { ConfigService } from '@nestjs/config';
 
 @Controller({
