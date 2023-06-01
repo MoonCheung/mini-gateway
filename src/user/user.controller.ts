@@ -1,11 +1,14 @@
-import { Controller, Get, Version, VERSION_NEUTRAL } from '@nestjs/common';
-import { UserService } from './user.service';
+import { Controller, Get, Post, Body, Version, VERSION_NEUTRAL } from '@nestjs/common';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { BusinessException } from '@/common/exceptions/business.exception';
 import { ConfigService } from '@nestjs/config';
+import { UserService } from './user.service';
+import { AddUserDto } from './user.dto';
 
+@ApiTags('用户')
 @Controller({
   path: 'user',
-  version: '1',
+  version: [VERSION_NEUTRAL],
 })
 export class UserController {
   constructor(
@@ -43,6 +46,14 @@ export class UserController {
   @Version([VERSION_NEUTRAL, '1'])
   getTestName() {
     return this.configService.get('TEST_VALUE').name;
+  }
+
+  @ApiOperation({
+    summary: '新增用户',
+  })
+  @Post('/add')
+  create(@Body() user: AddUserDto) {
+    return this.userService.createOrSave(user);
   }
 
   @Get()
