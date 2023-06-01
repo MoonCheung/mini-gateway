@@ -25,7 +25,7 @@ export class UserController {
   @Get('findError')
   @Version([VERSION_NEUTRAL, '1'])
   findError() {
-    const a: any = {};
+    const a: string = {};
     console.log(a.b.c);
     return this.userService.findAll();
   }
