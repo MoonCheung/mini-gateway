@@ -1,7 +1,7 @@
-import { method } from '@/utils/request';
+import { methodV } from 'src/utils/request';
 
 export const getUserInfo = async (user_token: string) => {
-  const { data } = await method({
+  const { data } = await methodV({
     url: `/authen/v1/user_info`,
     method: 'GET',
     headers: {
@@ -21,7 +21,7 @@ export const getSingleUserInfo = async (
   feishuUserId: string,
   token: string,
 ) => {
-  const { data } = await method({
+  const { data } = await methodV({
     url: `/contact/v3/users/${feishuUserId}`,
     method: 'GET',
     query: {
@@ -39,11 +39,8 @@ export const getSingleUserInfo = async (
  * @param app_token
  * @returns
  */
-export const getUserListByDepartmentId = async (
-  department_id: string,
-  app_token: string,
-) => {
-  const { data } = await method({
+export const getUserListByDepartmentId = async (department_id: string, app_token: string) => {
+  const { data } = await methodV({
     url: `https://open.feishu.cn/open-apis/contact/v3/users`,
     // url: `/contact/v3/users/find_by_department`,
     method: 'GET',
@@ -59,8 +56,9 @@ export const getUserListByDepartmentId = async (
   return data;
 };
 
+
 export const getEmployeeTypeEnums = async ({ app_token }) => {
-  const { data } = await method({
+  const { data } = await methodV({
     url: `/contact/v3/employee_type_enums`,
     method: 'GET',
     query: {

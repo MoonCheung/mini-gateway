@@ -1,4 +1,5 @@
-import type { FastifyReply, FastifyRequest } from 'fastify';
+import { FastifyReply, FastifyRequest } from "fastify";
+
 import {
   ExceptionFilter,
   Catch,
@@ -15,7 +16,7 @@ export class AllExceptionsFilter implements ExceptionFilter {
     const response = ctx.getResponse<FastifyReply>();
     const request = ctx.getRequest<FastifyRequest>();
 
-    request.log.error(exception);
+    request.log.error(exception)
 
     // 非 HTTP 标准异常的处理。
     response.status(HttpStatus.SERVICE_UNAVAILABLE).send({

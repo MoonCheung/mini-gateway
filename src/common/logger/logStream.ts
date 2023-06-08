@@ -1,9 +1,13 @@
+/*
+ * @Author: Cookie
+ * @Description: 日志基础类，包含控制台打印
+ */
+
 const chalk = require('chalk')
 const dayjs = require('dayjs')
 const split = require('split2')
 const JSONparse = require('fast-json-parse')
 
-// 日志类型
 const levels = {
   [60]: 'Fatal',
   [50]: 'Error',
@@ -13,7 +17,6 @@ const levels = {
   [10]: 'Trace'
 };
 
-// 控制台输出颜色
 const colors = {
   [60]: 'magenta',
   [50]: 'red',

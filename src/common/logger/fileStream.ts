@@ -1,8 +1,15 @@
+/*
+ * @Author: Cookie
+ * @Description: 日志缓存文件类
+ */
+
 import { dirname } from 'path'
 import { createWriteStream, stat, rename } from 'fs'
+
+const assert = require("assert")
+const mkdirp = require("mkdirp")
+
 import { LogStream } from "./logStream"
-import * as assert from 'assert';
-import { mkdirp } from 'mkdirp';
 
 const defaultOptions = {
   maxBufferLength: 4096, // 日志写入缓存队列最大长度
@@ -243,4 +250,5 @@ export class FileStream extends LogStream {
     }
     await fileRename(srcPath, targetPath)
   }
+
 }

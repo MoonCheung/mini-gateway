@@ -1,5 +1,5 @@
 import { APP_ID, APP_SECRET } from './const';
-import { method } from '@/utils/request';
+import { methodV } from 'src/utils/request';
 
 export type GetAppTokenRes = {
   code: number;
@@ -9,7 +9,7 @@ export type GetAppTokenRes = {
 };
 
 export const getUserToken = async ({ code, app_token }) => {
-  const { data } = await method({
+  const { data } = await methodV({
     url: `/authen/v1/access_token`,
     method: 'POST',
     headers: {
@@ -24,7 +24,7 @@ export const getUserToken = async ({ code, app_token }) => {
 };
 
 export const refreshUserToken = async ({ refreshToken, app_token }) => {
-  const { data } = await method({
+  const { data } = await methodV({
     url: `/authen/v1/refresh_access_token`,
     method: 'POST',
     headers: {
@@ -40,7 +40,7 @@ export const refreshUserToken = async ({ refreshToken, app_token }) => {
 };
 
 export const getUserAccessToken = async (code) => {
-  const { data } = await method({
+  const { data } = await methodV({
     url: `/suite/passport/oauth/token`,
     method: 'POST',
     params: {
@@ -53,8 +53,9 @@ export const getUserAccessToken = async (code) => {
   return data as GetAppTokenRes;
 };
 
+
 export const getAppToken = async () => {
-  const { data } = await method({
+  const { data } = await methodV({
     url: `/auth/v3/app_access_token/internal`,
     method: 'POST',
     params: {

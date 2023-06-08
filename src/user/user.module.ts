@@ -17,4 +17,4 @@ import { FeishuController } from './feishu/feishu.controller'
   providers: [...UserProviders, UserService, FeishuService],
   exports: [UserService],
 })
-export class UserModule {}
+export class UserModule { }
