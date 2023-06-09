@@ -11,11 +11,11 @@ import * as redisStore from 'cache-manager-redis-store';
   imports: [
     CacheModule.register({
       isGlobal: true,
-      // store: redisStore,
-      // host: getConfig('REDIS_CONFIG').host,
-      // port: getConfig('REDIS_CONFIG').port,
-      // auth_pass: getConfig('REDIS_CONFIG').auth,
-      // db: getConfig('REDIS_CONFIG').db
+      store: redisStore,
+      host: getConfig('REDIS_CONFIG').host,
+      port: getConfig('REDIS_CONFIG').port,
+      auth_pass: getConfig('REDIS_CONFIG').auth,
+      db: getConfig('REDIS_CONFIG').db
     }),
     ConfigModule.forRoot({
       ignoreEnvFile: true,
