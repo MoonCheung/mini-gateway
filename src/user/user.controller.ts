@@ -11,8 +11,7 @@ import {
 } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { UserService } from './user.service';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
+import { CreateUserDto, UpdateUserDto } from './user.dto';
 import { BusinessException } from '@/common/exceptions/business.exception';
 import { ConfigService } from '@nestjs/config';
 import { AddUserDto } from './user.dto';

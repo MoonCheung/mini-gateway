@@ -1,10 +1,13 @@
-import { Entity, Column, UpdateDateColumn, ObjectIdColumn } from 'typeorm';
+import { Column, ObjectID, Entity, ObjectIdColumn } from 'typeorm'
 
-@Entity()
+@Entity('users')
 export class User {
-  @ObjectIdColumn()
-  id?: number;
+  @ObjectIdColumn() id: ObjectID
+  @Column() name: string
+  @Column() email: string
+  @Column() username: string
 
-  @Column({ default: null })
-  name: string;
+  constructor(user?: Partial<User>) {
+    Object.assign(this, user)
+  }
 }

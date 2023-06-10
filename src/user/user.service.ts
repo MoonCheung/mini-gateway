@@ -1,13 +1,13 @@
-import { In, Like, Raw, MongoRepository } from 'typeorm';
 import { Injectable, Inject } from '@nestjs/common';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
+import { InjectRepository } from '@nestjs/typeorm'
+import { In, Like, Raw, MongoRepository } from 'typeorm';
+import { CreateUserDto, UpdateUserDto } from './user.dto';
 import { User } from './user.mongo.entity';
 
 @Injectable()
 export class UserService {
   constructor(
-    @Inject('USER_REPOSITORY')
+    @InjectRepository(User)
     private userRepository: MongoRepository<User>
   ) { }
   create(createUserDto: CreateUserDto) {

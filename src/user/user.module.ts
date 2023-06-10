@@ -1,20 +1,20 @@
 import { Module } from '@nestjs/common';
-import { DatabaseModule } from '@/common/database/database.module';
+import { TypeOrmModule } from '@nestjs/typeorm'
 import { UserController } from './user.controller';
 import { UserService } from './user.service';
-import { UserProviders } from './user.providers';
 import { FeishuService } from './feishu/feishu.service';
 import { FeishuController } from './feishu/feishu.controller'
+import { User } from './user.mongo.entity'
 
 @Module({
   imports: [
-    DatabaseModule
+    TypeOrmModule.forFeature([User])
   ],
   controllers: [
     FeishuController,
     UserController
   ],
-  providers: [...UserProviders, UserService, FeishuService],
+  providers: [UserService, FeishuService],
   exports: [UserService],
 })
 export class UserModule { }

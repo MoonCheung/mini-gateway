@@ -34,6 +34,7 @@
     "@nestjs/passport": "^9.0.0",
     "@nestjs/platform-fastify": "^9.0.1",
     "@nestjs/swagger": "^6.0.1",
+    "@nestjs/typeorm": "^7.1.5",
     "assert": "^2.0.0",
     "axios": "^1.4.0",
     "cache-manager": "^3.6.1",
