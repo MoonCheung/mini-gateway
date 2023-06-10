@@ -1,0 +1,29 @@
+version: '3.3'
+
+volumes:
+  mongo:
+  redis:
+  redis.conf:
+
+services:
+  mongo:
+    image: mongo:jammy
+    restart: always
+    environment:
+      # MONGO_INITDB_ROOT_USERNAME: admin
+      # MONGO_INITDB_ROOT_PASSWORD: 123456
+      MONGODB_DATABASE: mini-gateway
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./mongo:/db/data/db
+      - ./mongo:/log/data/logs
+  redis:
+    image: redis:7.0
+    restart: always
+    command: redis-server /usr/local/etc/redis/redis.conf
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./redis:/db/data/db
+      - ./redis.conf:/usr/local/etc/redis/redis.conf
