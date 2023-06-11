@@ -1,4 +1,5 @@
 import fastify from 'fastify'
+import fastifyCookie from '@fastify/cookie';
 import { ValidationPipe, VersioningType, VERSION_NEUTRAL } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { FastifyAdapter } from '@nestjs/platform-fastify';
@@ -21,6 +22,10 @@ async function bootstrap() {
     AppModule,
     new FastifyAdapter(fastifyInstance),
   );
+
+  app.register(fastifyCookie, {
+    secret: 'my-secret', // for cookies signature
+  });
 
   // 统一响应体格式
   app.useGlobalInterceptors(new TransformInterceptor());

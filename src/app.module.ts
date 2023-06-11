@@ -1,11 +1,12 @@
 import type { RedisClientOptions } from 'redis';
+import { APP_GUARD } from '@nestjs/core'
 import { CacheModule, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm'
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import { getConfig } from './utils';
+import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
 import * as redisStore from 'cache-manager-redis-store';
 
 @Module({
@@ -33,10 +34,16 @@ import * as redisStore from 'cache-manager-redis-store';
       ignoreEnvFile: true,
       isGlobal: true,
       load: [getConfig]
-    }), 
-    UserModule
+    }),
+    UserModule,
+    AuthModule
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: JwtAuthGuard,
+    }
+  ]
 })
 export class AppModule { }

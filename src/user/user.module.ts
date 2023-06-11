@@ -15,6 +15,6 @@ import { User } from './user.mongo.entity'
     UserController
   ],
   providers: [UserService, FeishuService],
-  exports: [UserService],
+  exports: [UserService, FeishuService],
 })
 export class UserModule { }

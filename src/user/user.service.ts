@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm'
 import { In, Like, Raw, MongoRepository } from 'typeorm';
 import { CreateUserDto, UpdateUserDto } from './user.dto';
 import { User } from './user.mongo.entity';
+import { FeishuUserInfo } from './feishu/feishu.dto';
 
 @Injectable()
 export class UserService {
@@ -31,7 +32,9 @@ export class UserService {
   }
 
   createOrSave(user) {
-    console.log('watch user:', user)
     return this.userRepository.save(user)
+  }
+  async createOrUpdateByFeishu(feishuUserInfo: FeishuUserInfo) {
+    return await this.userRepository.save(feishuUserInfo);
   }
 }
