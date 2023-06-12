@@ -11,3 +11,5 @@ This is the minimum implementation of the gateway project
 - [x] docker mongodb config
 - [x] Get feishu user credential
 - [x] feishu auth2 authorized login
+- [] proxy and cache
+- [] micro service

@@ -1,0 +1,16 @@
+{
+  "api.devmoon.com": {
+    "/devops": {
+      "lastModified": 1,
+      "pageId": 1
+    },
+    "/jenkins": {
+      "lastModified": 1,
+      "pageId": 2
+    },
+    "/nginx": {
+      "lastModified": 1,
+      "pageId": 3
+    }
+  }
+}

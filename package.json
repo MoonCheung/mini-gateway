@@ -1,16 +1,19 @@
 {
-  "name": "mini-gateway",
+  "name": "@mini-gateway/monorepo",
   "version": "0.0.1",
   "description": "",
   "author": "MoonCheung",
   "private": true,
   "license": "MIT",
+  "workspaces": ["apps/*"],
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build --webpack",
-    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "format": "prettier --write \"apps/**/*.ts\" \"libs/**/*.ts\"",
     "start": "nest start",
-    "start:dev": "cross-env RUNNING_ENV=dev nest start --watch",
+    "start:gateway": "pnpm -r --parallel --filter=./apps/mini-gateway run dev",
+    "start:user": "pnpm -r --parallel --filter=./apps/user-center run dev",
+    "start:materials": "pnpm -r --parallel --filter=./apps/materials run dev",
     "start:hotdev": "cross-env RUNNING_ENV=dev nest build --webpack --webpackPath webpack-hmr.config.ts --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "nest build --webpack && pm2 start ecosystem.config.js --env production",
@@ -19,7 +22,7 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./apps/mini-gateway/test/jest-e2e.json"
   },
   "dependencies": {
     "@fastify/cookie": "^7.0.0",
@@ -32,6 +35,7 @@
     "@nestjs/microservices": "^9.0.5",
     "@nestjs/mongoose": "^9.0.3",
     "@nestjs/passport": "^9.0.0",
+    "@nestjs/platform-express": "^9.4.2",
     "@nestjs/platform-fastify": "^9.0.1",
     "@nestjs/swagger": "^6.0.1",
     "@nestjs/typeorm": "^7.1.5",
@@ -64,6 +68,7 @@
     "rxjs": "^7.2.0",
     "split2": "^4.1.0",
     "typeorm": "^0.3.5",
+    "url": "^0.11.1",
     "yaml": "^2.0.0"
   },
   "devDependencies": {
@@ -98,7 +103,7 @@
       "json",
       "ts"
     ],
-    "rootDir": "src",
+    "rootDir": ".",
     "testRegex": ".*\\.spec\\.ts$",
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"
@@ -106,7 +111,14 @@
     "collectCoverageFrom": [
       "**/*.(t|j)s"
     ],
-    "coverageDirectory": "../coverage",
-    "testEnvironment": "node"
+    "coverageDirectory": "./coverage",
+    "testEnvironment": "node",
+    "roots": [
+      "<rootDir>/apps/",
+      "<rootDir>/libs/"
+    ],
+    "moduleNameMapper": {
+      "^common/common(|/.*)$": "<rootDir>/libs/common/src/$1"
+    }
   }
 }
