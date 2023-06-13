@@ -2,7 +2,26 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "declaration": false,
+    "paths": {
+      "@/*": [
+        "src/*"
+      ],
+      "types/*": [
+        "../../types/*"
+      ],
+      "@app/common": [
+        "../../libs/common"
+      ],
+      "@app/common/*": [
+        "../../libs/common/*"
+      ]
+    },
+    "baseUrl": ".",
     "outDir": "../../dist/apps/mini-gateway"
   },
+  "include": [
+    "src/**/*",
+    "../../types/*.d.ts"
+  ],
   "exclude": ["node_modules", "dist", "test", "**/*spec.ts"]
 }

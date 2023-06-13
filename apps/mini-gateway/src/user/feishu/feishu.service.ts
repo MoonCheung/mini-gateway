@@ -1,14 +1,7 @@
 import { CACHE_MANAGER, Inject, Injectable, Logger } from '@nestjs/common';
-import {
-  getAppToken,
-  getUserAccessToken,
-  getUserToken,
-  refreshUserToken,
-} from '../../helper/feishu/auth';
 import { Cache } from 'cache-manager';
-import { BusinessException } from '../../../../../libs/common/exceptions/business.exception';
+import { BusinessException, getAppToken, getUserAccessToken, getUserToken, refreshUserToken, messages } from '@app/common';
 import { ConfigService } from '@nestjs/config';
-import { messages } from '../../helper/feishu/message';
 import { GetUserTokenDto } from './feishu.dto';
 
 @Injectable()
@@ -22,7 +15,7 @@ export class FeishuService {
   }
 
   async getAppToken() {
-    let appToken: string;
+    let appToken: string | unknown;
     appToken = await this.cacheManager.get(this.APP_TOKEN_CACHE_KEY);
     if (!appToken) {
       const response = await getAppToken();

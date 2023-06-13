@@ -3,8 +3,6 @@
   "version": "0.0.1",
   "description": "monorepo gateway",
   "scripts": {
-    "dev": "cross-env RUNNING_ENV=dev nest start --watch",
-    "debug": "nest start --debug --watch",
-    "build": "nest build --webpack && pm2 start ecosystem.config.js --env production"
+    "dev": "cd .. && pnpm start:gateway"
   }
 }

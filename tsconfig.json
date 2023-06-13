@@ -22,6 +22,12 @@
     "paths": {
       "@/*": [
         "src/*"
+      ],
+      "@app/common": [
+        "libs/common"
+      ],
+      "@app/common/*": [
+        "libs/common/*"
       ]
     },
     "incremental": true,

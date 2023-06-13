@@ -1,4 +1,4 @@
-import { RECEIVE_TYPE, MSG_TYPE } from '../../helper/feishu/message';
+import { RECEIVE_TYPE, MSG_TYPE } from '@app/common';
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, IsEnum } from 'class-validator';
 
@@ -42,5 +42,5 @@ export class GetUserTokenDto {
   @IsNotEmpty()
   @ApiProperty({ example: 'xxxx', description: '飞书临时登录凭证' })
   code: string;
-  app_token: string;
+  app_token: string | unknown;
 }

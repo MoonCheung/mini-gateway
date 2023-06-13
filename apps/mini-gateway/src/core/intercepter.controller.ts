@@ -1,5 +1,5 @@
 import { URL } from 'url';
-import { Public } from '../auth/constants';
+import { Public } from '@/auth/constants';
 import {
   Controller,
   Get,

@@ -12,7 +12,7 @@ import { AuthService } from './auth.service';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { GetTokenByApplications } from './auth.dto';
 import { Public } from './constants';
-import { PayloadUser } from '../helper';
+import { PayloadUser } from '@app/common';
 import { FastifyReply } from 'fastify'
 
 @ApiTags('用户认证')

@@ -12,7 +12,7 @@ import {
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { UserService } from './user.service';
 import { CreateUserDto, UpdateUserDto } from './user.dto';
-import { BusinessException } from '../../../../libs/common/exceptions/business.exception';
+import { BusinessException } from '@app/common';
 import { ConfigService } from '@nestjs/config';
 import { AddUserDto } from './user.dto';
 

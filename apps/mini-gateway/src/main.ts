@@ -5,10 +5,7 @@ import { NestFactory } from '@nestjs/core';
 import { FastifyAdapter } from '@nestjs/platform-fastify';
 import type { NestFastifyApplication } from '@nestjs/platform-fastify';
 import { AppModule } from './app.module';
-import { AllExceptionsFilter } from '../../../libs/common/exceptions/base.exception.filter';
-import { HttpExceptionFilter } from '../../../libs/common/exceptions/http.exception.filter';
-import { TransformInterceptor } from '../../../libs/common/interceptors/transform.interceptor';
-import { FastifyLogger } from '../../../libs/common/logger'
+import { AllExceptionsFilter, HttpExceptionFilter, TransformInterceptor, FastifyLogger } from '@app/common';
 import { generateDocument } from './doc';
 
 declare const module: any;

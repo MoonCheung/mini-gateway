@@ -8,7 +8,7 @@
   "monorepo": true,
   "root": "apps/mini-gateway",
   "compilerOptions": {
-    "webpack": true,
+    "webpack": false,
     "tsConfigPath": "apps/mini-gateway/tsconfig.app.json"
   },
   "projects": {
