@@ -1,7 +1,7 @@
 # Mini-Gateway
 
 This is the minimum implementation of the gateway project
-> If you are looking for the latest code, please see [master branch](https://github.com/MoonCheung/mini-gateway/tree/master)
+> If you are looking for the latest code, please see [main branch](https://github.com/MoonCheung/mini-gateway/tree/main)
 
 ## Features
 - [x] open an swagger document
@@ -11,5 +11,5 @@ This is the minimum implementation of the gateway project
 - [x] docker mongodb config
 - [x] Get feishu user credential
 - [x] feishu auth2 authorized login
-- [] proxy and cache
-- [] micro service
+- [x] proxy and cache
+- [ ] micro service
