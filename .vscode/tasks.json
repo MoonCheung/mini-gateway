@@ -1,0 +1,32 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+    // 下面tasks配置文件
+    // tsc: build: TypeScript 编译任务，它使用 tsconfig.json 文件中的配置来编译 TypeScript 代码。任务的类型为 typescript，所以它会使用 tsc 命令来执行编译。在编译期间，如果有任何错误，则会使用 $tsc 问题匹配器来识别错误信息。
+    // npm: start:debug: 运行 NestJS 应用程序的调试任务。它的类型是 npm，可以使用 NPM、Yarn 或 PNPM 来运行脚本。该任务执行 start:debug 脚本，该脚本由 NestJS 应用程序开发人员定义，并在 package.json 文件中指定。该任务的依赖关系是 tsc: build，这意味着在运行 npm: start:debug 任务之前，需要先执行 tsc: build 任务来编译 TypeScript 代码。
+    {
+      "type": "typescript",
+      "tsconfig": "tsconfig.json",
+      "problemMatcher": [
+        "$tsc"
+      ],
+      "group": "build",
+      "label": "tsc: build",
+      "options": {
+        "emit": "true",
+        "pretty": "true",
+      }
+    },
+    {
+      "type": "npm",
+      "script": "start:debug",
+      "path": "apps/user-center",
+      "problemMatcher": [],
+      "label": "npm: start:debug - apps/user-center",
+      "detail": "pnpm run start:debug",
+      "dependsOn": [
+        "tsc: build"
+      ]
+    }
+  ]
+}
