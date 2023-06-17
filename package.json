@@ -5,7 +5,9 @@
   "author": "MoonCheung",
   "private": true,
   "license": "MIT",
-  "workspaces": ["apps/*"],
+  "workspaces": [
+    "apps/*"
+  ],
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build --webpack",
@@ -25,18 +27,16 @@
     "test:e2e": "jest --config ./apps/mini-gateway/test/jest-e2e.json"
   },
   "dependencies": {
-    "@fastify/cookie": "^7.0.0",
+    "@fastify/cookie": "^7.4.0",
     "@fastify/static": "^6.4.0",
     "@nestjs/axios": "^0.1.0",
-    "@nestjs/common": "^9.0.5",
+    "@nestjs/common": "^9.3.12",
     "@nestjs/config": "^2.2.0",
-    "@nestjs/core": "^9.0.1",
+    "@nestjs/core": "^9.3.12",
     "@nestjs/jwt": "^9.0.0",
-    "@nestjs/microservices": "^9.0.5",
     "@nestjs/mongoose": "^9.0.3",
     "@nestjs/passport": "^9.0.0",
-    "@nestjs/platform-express": "^9.4.2",
-    "@nestjs/platform-fastify": "^9.0.1",
+    "@nestjs/platform-fastify": "^9.3.12",
     "@nestjs/swagger": "^6.0.1",
     "@nestjs/typeorm": "^7.1.5",
     "assert": "^2.0.0",

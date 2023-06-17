@@ -1,4 +1,3 @@
-import fastify from 'fastify'
 import fastifyCookie from '@fastify/cookie';
 import { ValidationPipe, VersioningType, VERSION_NEUTRAL } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
@@ -11,17 +10,16 @@ import { generateDocument } from './doc';
 declare const module: any;
 
 async function bootstrap() {
-  const fastifyInstance = fastify({
-    logger: FastifyLogger,
-  })
-
   const app = await NestFactory.create<NestFastifyApplication>(
     AppModule,
-    new FastifyAdapter(fastifyInstance),
+    new FastifyAdapter({
+      logger: FastifyLogger,
+    }),
   );
-
+  // @ts-ignore
   app.register(fastifyCookie, {
     secret: 'my-secret', // for cookies signature
+    parseOptions: {}     // options for parsing cookies
   });
 
   // 统一响应体格式
